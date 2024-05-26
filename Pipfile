@@ -1,0 +1,11 @@
+[packages]
+black = "*"
+flake8 = "*"
+isort = "*"
+mkdocs = "*"
+pip = "*"
+python-dotenv = "*"
+"image_classification_trash" ={editable = true, path = "."}
+
+[requires]
+python_version = "3.10"
