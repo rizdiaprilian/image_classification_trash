@@ -11,9 +11,9 @@ parser.add_argument("class_name", type=str, help="category of class that images 
 args = parser.parse_args()
 # Load the original image
 
-prepath = os.path.join(os.getcwd(), 'raw', 'trash_images_test')
+prepath = os.path.join(os.getcwd(), 'raw', 'trash_images_train')
 class_dir = os.path.join(prepath, str(args.int_class))
-destPath = os.path.join(os.getcwd(), 'processed', 'trash_images_test_resized', args.class_name)
+destPath = os.path.join(os.getcwd(), 'processed', 'trash_images_train_resized', args.class_name)
 
 
 
