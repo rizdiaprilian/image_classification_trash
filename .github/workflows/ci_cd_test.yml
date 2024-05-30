@@ -19,7 +19,7 @@ jobs:
 
       - name: Executing a python script
         run:
-          python ./data/calling_data.py 0 cardboard
+          python ./data/resize.py 0 cardboard
 
   # my-second-job:
   #   runs-on: ubuntu-latest

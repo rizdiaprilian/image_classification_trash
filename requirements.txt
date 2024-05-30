@@ -5,4 +5,5 @@ torchinfo==1.8.0
 torchvision==0.18.0
 tqdm==4.66.4
 typing_extensions==4.9.0
+scipy==1.13.0
 
