@@ -21,17 +21,17 @@ jobs:
         run:
           python ./data/resize.py 0 cardboard
 
-      - name: Upload resized images as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: resized-images
-          path: data/processed/trash_images_train_resized/
+      # - name: Upload resized images as artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: resized-images
+      #     path: data/processed/trash_images_train_resized/
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'rizdiaprilian'
           git config --global user.email 'rizdi.shusuke@gmail.com'
-          git add data/processed/trash_images_train_resized/
+          git add /home/runner/work/image_classification_trash/image_classification_trash/processed/trash_images_train_resized/cardboard
           git commit -m 'Add resized images'
           git push origin feature/actions
         env:
