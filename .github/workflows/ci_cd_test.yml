@@ -1,0 +1,31 @@
+name: Basic CI Two Steps
+
+on: [push]
+
+jobs:
+  my-first-job:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install required dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executing a python script
+        run:
+          python ./data/callign_data.py
+
+  # my-second-job:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: run the second python script
+  #       run: |
+  #         pip install -r requirements.txt
+  #         python ci_two_steps.py
