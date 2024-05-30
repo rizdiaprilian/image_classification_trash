@@ -1,8 +1,5 @@
 import os
-import sys
 import numpy as np
-from scipy import misc, ndimage
-from PIL import Image
 import argparse
 
 parser = argparse.ArgumentParser()
