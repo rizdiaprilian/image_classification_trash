@@ -19,7 +19,7 @@ jobs:
 
       - name: Executing a python script
         run:
-          python ./data/callign_data.py
+          python ./data/calling_data.py
 
   # my-second-job:
   #   runs-on: ubuntu-latest
