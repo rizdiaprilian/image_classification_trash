@@ -25,7 +25,7 @@ jobs:
         run: |
           git config --global user.name 'rizdiaprilian'
           git config --global user.email 'rizdi.shusuke@gmail.com'
-          git add data/processed/train_images_processed
+          git add data/processed/trash_images_train_resized
           git commit -m 'Add resized images'
           git push origin feature/actions  # Replace 'main' with your target branch
         env:
