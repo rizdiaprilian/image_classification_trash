@@ -36,8 +36,14 @@ A virtual environment `Pipenv` is employed for this project.
 
 Steps to activate pipenv and install required libraries:
 ```
+pipenv install numpy pillow torch==2.3.0+cu118 torchvision==0.18.0+cu118
+pipenv install -d pytest flake8 black
+
+# Activate the virtual environment
 pipenv shell
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# To exit the virtual environment
+exit
 ``` 
 
 ### Steps
