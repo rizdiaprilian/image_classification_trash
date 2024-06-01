@@ -22,7 +22,7 @@ python resize.py 0 cardboard
 python resize.py 1 glass
 python resize.py 2 metal
 python resize.py 3 papers
-python resize.py 4 plastic
+python resize.py 4 plastics
 python resize.py 5 trash
 ```
 
