@@ -1,9 +1,4 @@
 import torch
-from torch.cuda.amp import GradScaler, autocast
-
-from tqdm.auto import tqdm
-from typing import Dict, List, Tuple
-
 from timeit import default_timer as timer
 
 num_epochs = 10
@@ -15,41 +10,23 @@ def model_training(model: torch.nn.Module,
         device: torch.device):
     loss_hist_train = 0
     accuracy_hist_train = 0
-    # Use mixed precision training
-    scaler = GradScaler()
     train_time_start_on_gpu = timer()
     model.train()
     for x_batch, y_batch in train_dataloader:
-        # # Send data to GPU
-        # x_batch, y_batch = x_batch.to(device), y_batch.to(device)
+        # Send data to GPU
+        x_batch, y_batch = x_batch.to(device), y_batch.to(device)
         
-        # # 1. Forward pass
-        # pred = model(x_batch)
+        # 1. Forward pass
+        pred = model(x_batch)
 
-        # # 2. Calculate loss
-        # loss = loss_fn(pred, y_batch)
+        # 2. Calculate loss
+        loss = loss_fn(pred, y_batch)
 
-        # # 4. Loss backward
-        # loss.backward()
-        with torch.autocast(device_type='cuda', dtype=torch.float16):
-            # Send data to GPU
-            x_batch, y_batch = x_batch.to(device), y_batch.to(device)
-            
-            # 1. Forward pass
-            pred = model(x_batch)
-    
-            # 2. Calculate loss
-            loss = loss_fn(pred, y_batch)
-            
-        # 4. Backward pass with mixed precision
-        scaler.scale(loss).backward()
+        # 4. Loss backward
+        loss.backward()
 
         # 5. Optimizer step
-        scaler.step(optimizer)
-        scaler.update()
-
-        # # 5. Optimizer step
-        # optimizer.step()
+        optimizer.step()
 
         # 3. Optimizer zero grad
         optimizer.zero_grad()

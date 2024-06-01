@@ -1,12 +1,10 @@
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
-from PIL import Image
-from pathlib import Path
 
 import os
 
-PARENT_DIR = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+PARENT_DIR = os.path.abspath(os.path.join(os.getcwd()))
 
 
 # Transformations for training set
