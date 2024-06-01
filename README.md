@@ -66,5 +66,5 @@ pytest
 
 ### Publishing to HuggingFaceHub
 
-![link](https://huggingface.co/spaces/rizdi21/trash_image_classifier)
+[link](https://huggingface.co/spaces/rizdi21/trash_image_classifier)
 
