@@ -4,7 +4,6 @@ import sys
 import torch
 from torch import nn
 from torch import optim
-from torchinfo import summary
 from dotenv import load_dotenv
 
 from dataset import load_train_dataset, load_val_dataset, load_test_dataset

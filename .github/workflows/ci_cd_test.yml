@@ -20,7 +20,7 @@ jobs:
       - name: Executing a python script
         run:
           python ./data/resize.py 0 cardboard
-          python ./src/main_programming.py
+          python ./src/main_program.py
 
       # - name: Upload resized images as artifact
       #   uses: actions/upload-artifact@v3
