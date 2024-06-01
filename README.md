@@ -14,9 +14,17 @@ ResNet18 is chosen as a convolutional base and a new customised classification l
 
 A collection of trash iamges are available for download from https://huggingface.co/datasets/garythung/trashnet. This set comes in a large dictionary packed with Pillow images at the large size, prompting us to  of modification and file organization so that PyTorch vision models could be able to update weights from images fed from input pipelines.
 
-### Project Description
+After downloading images completes, we execute a python script `resize.py` to shrink all images while also pushing them to one of three folders of training, validation, and test directories.
 
-Sequences of executions begins from image preparation and initial image visualization, deep learning building, training, and assessing performance; these are covered in `Modelling.ipynb`. Trained models, resides in directory 'models/ResNet18', goes through conversion process in which its structures change from `assets`, `variables`, and `savedmodel.pb` to TFlite format and SavedModel suitable for sending prediction in respond to incoming requests across REST API or running docker images.
+```
+cd data/
+python resize.py 0 cardboard
+python resize.py 1 glass
+python resize.py 2 metal
+python resize.py 3 papers
+python resize.py 4 plastic
+python resize.py 5 trash
+```
 
 
 ### Environment
@@ -44,6 +52,19 @@ exit
 5) Throughout training process, the loss and accuracy per epoch are gathered by Weights & Biases, a prediction table is also included.
 6) Testing ResNet18 on the test set, and measure how far the overfitting extends.
 7) Saving the model, then use it to do some demonstration in Gradio app.
-8) Publishing the Gradio app along with some files and a trained ResNet model to HuggingFace Hub.  
+8) Publishing the Gradio app along with some files and a trained ResNet model to HuggingFace Hub.
+
+### Testing
+
+pytest is used to do some testing on some functions used for model training. 
+
+```
+pytest
+```
 
 ![Image](hugging_face_pytorch.png)
+
+### Publishing to HuggingFaceHub
+
+![link](https://huggingface.co/spaces/rizdi21/trash_image_classifier)
+
