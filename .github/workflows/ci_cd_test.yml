@@ -17,9 +17,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Executing a python script
+      # - name: Executing a python script
+      #   run:
+      #     python ./data/resize.py 0 cardboard
+
+      - name: Executing a modelling script
         run:
-          python ./data/resize.py 0 cardboard
           python ./src/main_program.py
 
       # - name: Upload resized images as artifact
