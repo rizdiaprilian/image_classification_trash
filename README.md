@@ -46,7 +46,7 @@ pipenv shell
 exit
 ``` 
 
-### Steps
+### Procedural Steps
 
 1) Reorganizing and resizing images to filling in on the three folders prepared in the `data/processed/`.
 2) Calling them from from `data/preprocessed`, we putting images and labels together in the form of `DataLoader`.
@@ -57,3 +57,4 @@ exit
 7) Saving the model, then use it to do some demonstration in Gradio app.
 8) Publishing the Gradio app along with some files and a trained ResNet model to HuggingFace Hub.  
 
+![Image](hugging_face_pytorch.png)
