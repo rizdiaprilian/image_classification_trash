@@ -6,7 +6,7 @@ from pathlib import Path
 
 import os
 
-PARENT_DIR = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+PARENT_DIR = os.path.abspath(os.path.join(os.getcwd()))
 
 
 # Transformations for training set

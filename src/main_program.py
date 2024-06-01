@@ -18,7 +18,7 @@ from save_model import model_checkpoint
 load_dotenv()
 
 # Parameters
-parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+parent_dir = os.path.abspath(os.path.join(os.getcwd()))
 
 # checkpoint_dir = os.getenv('CHECKPOINT_DIR')
 num_epochs = int(os.getenv('NUM_EPOCHS'))
