@@ -19,6 +19,7 @@ load_dotenv()
 
 # Parameters
 parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+
 # checkpoint_dir = os.getenv('CHECKPOINT_DIR')
 num_epochs = int(os.getenv('NUM_EPOCHS'))
 batch_size = int(os.getenv('BATCH_SIZE'))
@@ -36,34 +37,24 @@ device = (
 
 
 def main():
+    # List folders in the parent directory
+    folders = [name for name in os.listdir(parent_dir) if os.path.isdir(os.path.join(parent_dir, name))]
+    print(parent_dir)
+    # Print the list of folders
+    for folder in folders:
+        print(folder)
+
     train_dataset = load_train_dataset()
     val_dataset = load_val_dataset()
     test_dataset = load_test_dataset()
-
-    # # What's the shape of the image?
-    # image, label = train_dataset[0]
-    # print(f'Image shape of the first image is {image.shape}')
-    # print(f'Image format is {type(image)}')
-    # print(f"class names {train_dataset.classes}")
 
     train_dataset_transformed = transform_train_dataset(train_dataset)
     val_dataset_transformed = transform_val_dataset(val_dataset)
     test_dataset_transformed = transform_test_dataset(test_dataset)
 
-    # # What's the shape of the image?
-    # image, label = train_dataset_transformed[0]
-    # print(f'Image shape of the first image is {image.shape}')
-    # print(f'Image format is {type(image)}')
-
     train_dataloader = get_train_dataloader(train_dataset_transformed, batch_size)
     val_dataloader = get_val_dataloader(val_dataset_transformed, batch_size)
     test_dataloader = get_test_dataloader(test_dataset_transformed, batch_size)
-
-    # # Let's check out what we've created
-    # print(f"Dataloaders: {train_dataloader, val_dataloader, test_dataloader}") 
-    # print(f"Length of train dataloader: {len(train_dataloader)} batches of {batch_size}")
-    # print(f"Length of validation dataloader: {len(val_dataloader)} batches of {batch_size}")
-    # print(f"Length of test dataloader: {len(test_dataloader)} batches of {batch_size}")
 
     pretrained_resnet18 = modelling(device)
 
@@ -71,21 +62,13 @@ def main():
     loss_func = nn.CrossEntropyLoss()
     optimizer = optim.Adam(pretrained_resnet18.parameters(), lr=learning_rate)
 
-    # Print a summary using torchinfo (uncomment for actual output)
-#     print(summary(model=pretrained_resnet18, 
-#         input_size=(32, 3, 224, 224), # make sure this is "input_size", not "input_shape"
-#         # col_names=["input_size"], # uncomment for smaller output
-#         col_names=["input_size", "output_size", "num_params", "trainable"],
-#         col_width=20,
-#         row_settings=["var_names"]
-# ))
     # Start training with help from engine.py
     train(pretrained_resnet18, 
         train_dataloader, val_dataloader, 
         optimizer, loss_func,
         num_epochs, device)
     
-    model_name = "model_resnet_checkpoint_1445.pth"
+    model_name = "model_resnet_checkpoint_.pth"
     model_checkpoint(pretrained_resnet18, target_dir, model_name)
 
 
