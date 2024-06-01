@@ -1,18 +1,7 @@
-# image_classification_trash
-
-A project repository containing all codebase works of image classification
-
-## Project Organization
-
-This structure is developed from `cookiecutter`. 
-
---------
-
 ## Image Classification on Trash
 
 This project is development is conducted with the purpose of demonstrating the entire lifecycle of deep learning with adherance to software development practices. Few steps such as automation with GitHub Action, model tracking and versioning with Weights and Biases are implemented to further promote smooth transitions and flexibility. In this case, deep learning to answer multiclass classification is chosen to properly recognize types of trashes with machine learning engineering practices.
 
-## 1) Introduction
 ### Problem Context
 
 I came across the idea of making better use of pretrained Keras models that would see itself being able to learn and recognize variational patterns of animals under the same class, particularly class of bird. Acknowledging my liking of bird, I took a decision to put my machine learning engineering ability and knowledge into building project that would share meaningful purpose that machine learning could hope to achieve.
