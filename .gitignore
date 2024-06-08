@@ -1,0 +1,10 @@
+/reports/*
+/src/.env
+__pycache__
+.ipynb_checkpoints
+.vscode
+.pytest_cache
+/notebooks/Modelling_with_ResNet18_finetune.ipynb
+/notebooks/wandb
+/data/raw
+/src/gradio_apps

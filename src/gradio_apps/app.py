@@ -4,7 +4,6 @@ import torchvision.models as models
 import torchvision.transforms as transforms
 
 
-
 def preprocess_ease(input_image):
     image_transform = transforms.Compose([
         transforms.Resize((224, 224)),

@@ -54,6 +54,25 @@ exit
 7) Saving the model, then use it to do some demonstration in Gradio app.
 8) Publishing the Gradio app along with some files and a trained ResNet model to HuggingFace Hub.
 
+### Linting with `ruff`
+
+`ruff` will do the task of highlighting language syntax and style problems codes and notebooks; This can help identifying subtle programming mistakes in seconds. 
+Configurations of `ruff` are defined in a file `pyproject.toml`, in which all files located in `data`,`src`, and `test` are to be examined and any unconventional
+coding uses will be printed out on screen.
+
+```
+ruff check .
+```
+
+### Formmatting and Linting with `black` and `flake8`
+
+Following linting steps above, we make corrections on python codes using `black` as configured in `Makefile`. `flake8` will verify whether any unresolved issues still remain.
+
+```
+make format    # This command will restructure codes to ones adhering to PEP standards
+make lint     # This command will check 
+```
+
 ### Testing
 
 pytest is used to do some testing on some functions used for model training. 

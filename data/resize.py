@@ -1,34 +1,37 @@
-import os
-import sys
-import numpy as np
-from scipy import misc, ndimage
-from PIL import Image
 import argparse
+import os
+
+from PIL import Image
+from scipy import misc
 
 parser = argparse.ArgumentParser()
 parser.add_argument("int_class", type=int, help="category of class in integer type")
-parser.add_argument("class_name", type=str, help="category of class that images are belonged to")
+parser.add_argument(
+    "class_name", type=str, help="category of class that images are belonged to"
+)
 args = parser.parse_args()
 # Load the original image
 
-prepath = os.path.join(os.getcwd(), 'raw', 'trash_images_test')
+prepath = os.path.join(os.getcwd(), "raw", "trash_images_test")
 class_dir = os.path.join(prepath, str(args.int_class))
-destPath = os.path.join(os.getcwd(), 'processed', 'trash_images_test_resized', args.class_name)
-
+destPath = os.path.join(
+    os.getcwd(), "processed", "trash_images_test_resized", args.class_name
+)
 
 
 def resize(image, dim1, dim2):
-	return misc.imresize(image, (dim1, dim2))
+    return misc.imresize(image, (dim1, dim2))
 
-try: 
-	os.makedirs(destPath)
+
+try:
+    os.makedirs(destPath)
 except OSError:
-	if not os.path.isdir(destPath):
-		raise
+    if not os.path.isdir(destPath):
+        raise
 
 for subdir, dirs, files in os.walk(class_dir):
     for file in files:
-        if len(file) <= 4 or file[-4:] != '.jpg':
+        if len(file) <= 4 or file[-4:] != ".jpg":
             print(file)
 
         img = Image.open(os.path.join(subdir, file))
@@ -37,4 +40,3 @@ for subdir, dirs, files in os.walk(class_dir):
         new_width, new_height = 384, 512
         resized_img = img.resize((new_width, new_height))
         resized_img.save(os.path.join(destPath, file))
-    
